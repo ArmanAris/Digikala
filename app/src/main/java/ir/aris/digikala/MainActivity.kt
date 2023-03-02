@@ -21,6 +21,7 @@ class MainActivity : ComponentActivity() {
 
     private lateinit var navController: NavHostController
 
+
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +36,7 @@ class MainActivity : ComponentActivity() {
                     }
                 ) {
                     NavGraph(navController = navController)
+
                 }
 
             }
