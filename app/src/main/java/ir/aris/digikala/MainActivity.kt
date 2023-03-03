@@ -4,19 +4,18 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import ir.aris.digikala.navigation.BottomNavigationBar
 import ir.aris.digikala.navigation.NavGraph
 import ir.aris.digikala.ui.theme.DigikalaTheme
+import ir.aris.digikala.util.Constants.PERSIAN_LANG
+import ir.aris.digikala.util.LocaleUtils
 
 class MainActivity : ComponentActivity() {
 
@@ -31,15 +30,20 @@ class MainActivity : ComponentActivity() {
 
                 navController = rememberNavController()
 
-                Scaffold(
-                    bottomBar = {
-                        BottomNavigationBar(navController = navController, onItemClick = {
-                            navController.navigate(it.route)
-                        })
-                    }
-                ) {
-                    NavGraph(navController = navController)
+                LocaleUtils.setLocale(LocalContext.current, PERSIAN_LANG)
 
+                CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) { //androidx.compose.ui.unit.LayoutDirection
+                    Scaffold(
+                        bottomBar = {
+                            BottomNavigationBar(navController = navController, onItemClick = {
+                                navController.navigate(it.route)
+                            })
+                        }
+                    ) {
+
+                        NavGraph(navController = navController)
+
+                    }
                 }
 
             }
