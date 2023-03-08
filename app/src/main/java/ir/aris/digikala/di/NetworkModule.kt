@@ -6,7 +6,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ir.aris.digikala.data.network.ApiInterface
 import ir.aris.digikala.util.Constants.BASE_URL
-import ir.aris.digikala.util.Constants.TIME_OUT_SECOND
+import ir.aris.digikala.util.Constants.TIMEOUT_IN_SECOND
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -26,15 +26,14 @@ object NetworkModule {
         return logging
     }
 
-
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
-        .connectTimeout(TIME_OUT_SECOND, TimeUnit.SECONDS)
-        .writeTimeout(TIME_OUT_SECOND, TimeUnit.SECONDS)
-        .readTimeout(TIME_OUT_SECOND, TimeUnit.SECONDS)
+        .connectTimeout(TIMEOUT_IN_SECOND, TimeUnit.SECONDS)
+        .writeTimeout(TIMEOUT_IN_SECOND, TimeUnit.SECONDS)
+        .readTimeout(TIMEOUT_IN_SECOND, TimeUnit.SECONDS)
+        .addInterceptor(interceptor())
         .build()
-
 
     @Provides
     @Singleton
