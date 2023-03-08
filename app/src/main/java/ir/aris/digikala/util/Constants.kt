@@ -7,4 +7,7 @@ object Constants {
     const val DATASTORE_NAME = "DIGIKALA_DATA_STORE"
 
     var USER_LANGUAGE = "USER_LANGUAGE"
+
+    const val TIME_OUT_SECOND: Long = 60
+    const val BASE_URL = "https://jsonplaceholder.typicode.com"
 }

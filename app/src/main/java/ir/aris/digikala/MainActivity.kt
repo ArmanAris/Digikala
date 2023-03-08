@@ -15,6 +15,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import ir.aris.digikala.components.AppConfig
+import ir.aris.digikala.components.ChangeStatusBarColor
 import ir.aris.digikala.navigation.BottomNavigationBar
 import ir.aris.digikala.navigation.NavGraph
 import ir.aris.digikala.ui.theme.DigikalaTheme
@@ -38,6 +39,8 @@ class MainActivity : ComponentActivity() {
             DigikalaTheme {
 
                 navController = rememberNavController()
+
+                ChangeStatusBarColor(navController)
 
                 AppConfig()
 
