@@ -9,5 +9,5 @@ object Constants {
     var USER_LANGUAGE = "USER_LANGUAGE"
 
     const val TIMEOUT_IN_SECOND: Long = 60
-    const val BASE_URL = "https://jsonplaceholder.typicode.com"
+    const val BASE_URL = "https://dig-za0p.onrender.com/api/"
 }

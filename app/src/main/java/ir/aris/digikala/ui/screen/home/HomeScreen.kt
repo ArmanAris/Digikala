@@ -1,4 +1,4 @@
-package ir.aris.digikala.ui.screen
+package ir.aris.digikala.ui.screen.home
 
 
 import androidx.compose.material.Text

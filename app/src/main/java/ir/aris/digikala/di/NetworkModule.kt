@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import ir.aris.digikala.data.network.ApiInterface
+import ir.aris.digikala.data.network.HomeApiInterface
 import ir.aris.digikala.util.Constants.BASE_URL
 import ir.aris.digikala.util.Constants.TIMEOUT_IN_SECOND
 import okhttp3.OkHttpClient
@@ -43,11 +43,6 @@ object NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
-
-    @Provides
-    @Singleton
-    fun provideApiInterface(retrofit: Retrofit): ApiInterface =
-        retrofit.create(ApiInterface::class.java)
 
 }
 
