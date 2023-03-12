@@ -1,4 +1,4 @@
-package ir.aris.digikala.components
+package ir.aris.digikala.ui.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

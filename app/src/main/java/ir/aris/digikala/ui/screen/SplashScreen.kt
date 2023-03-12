@@ -13,7 +13,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import ir.aris.digikala.R
-import ir.aris.digikala.components.Loading3Dots
+import ir.aris.digikala.ui.components.Loading3Dots
 import ir.aris.digikala.navigation.Screen
 import ir.aris.digikala.ui.theme.splashBg
 import kotlinx.coroutines.delay

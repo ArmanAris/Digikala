@@ -14,8 +14,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
-import ir.aris.digikala.components.AppConfig
-import ir.aris.digikala.components.ChangeStatusBarColor
+import ir.aris.digikala.ui.components.AppConfig
+import ir.aris.digikala.ui.components.ChangeStatusBarColor
 import ir.aris.digikala.navigation.BottomNavigationBar
 import ir.aris.digikala.navigation.NavGraph
 import ir.aris.digikala.ui.theme.DigikalaTheme
