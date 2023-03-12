@@ -30,7 +30,7 @@ import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun TopSlider(viewModel: HomeViewModel = hiltViewModel()) {
+fun TopSliderSection(viewModel: HomeViewModel = hiltViewModel()) {
 
     var sliderList by remember { mutableStateOf<List<Slider>>(emptyList()) }
     var loading by remember { mutableStateOf(false) }

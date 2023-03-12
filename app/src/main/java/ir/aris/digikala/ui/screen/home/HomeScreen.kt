@@ -56,7 +56,8 @@ fun Home(
                     viewModel.getSlider()
                 }
 
-                TopSlider()
+                SearchBarSection()
+                TopSliderSection()
 
             }
         }
