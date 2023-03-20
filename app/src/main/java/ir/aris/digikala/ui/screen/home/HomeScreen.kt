@@ -12,12 +12,15 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.SwipeRefreshState
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
+import ir.aris.digikala.util.Constants
+import ir.aris.digikala.util.LocaleUtils
 import ir.aris.digikala.viewmodel.HomeViewModel
 import kotlinx.coroutines.launch
 
@@ -32,6 +35,12 @@ fun Home(
     navController: NavHostController,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
+
+    /*
+اگر در موقع بازگشت از صفحه وب ویو زیان تغییر کرد از کد زیر استفاده می کنیم.
+کد زیر دوباره زبان را ست می کند
+    */
+    // LocaleUtils.setLocale(LocalContext.current, Constants.USER_LANGUAGE)
 
     LaunchedEffect(true) {
         refreshDataFromServer(viewModel)
@@ -67,11 +76,19 @@ fun SwipeRefreshSection(
             item { SearchBarSection() }
             item { TopSliderSection() }
             item { ShowcaseSection(navController) }
+            item { AmazingOfferSection() }
 
         }
     }
 }
 
 private suspend fun refreshDataFromServer(viewModel: HomeViewModel) {
+    // type 1 view model
+    viewModel.getAllDataFromServer()
+
+    // type 2 view model
+    /*
     viewModel.getSlider()
+    viewModel.getAmazingItems()
+    */
 }

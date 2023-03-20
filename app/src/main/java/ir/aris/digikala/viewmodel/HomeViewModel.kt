@@ -2,7 +2,9 @@ package ir.aris.digikala.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import ir.aris.digikala.data.model.home.AmazingItem
 import ir.aris.digikala.data.model.home.Slider
 import ir.aris.digikala.data.network.NetworkResult
 import ir.aris.digikala.repository.HomeRepository
@@ -14,11 +16,36 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(private val repository: HomeRepository) : ViewModel() {
 
     val slider = MutableStateFlow<NetworkResult<List<Slider>>>(NetworkResult.Loading())
+    val amazingItems = MutableStateFlow<NetworkResult<List<AmazingItem>>>(NetworkResult.Loading())
 
+    //type 1
+    suspend fun getAllDataFromServer() {
+        // fire and forget
+        viewModelScope.launch {
+            launch {
+                slider.emit(repository.getSlider())
+            }
+            launch {
+                amazingItems.emit(repository.getAmazingItems())
+            }
+        }
+
+
+    }
+
+    //type 2
+    /*
     suspend fun getSlider() {
         viewModelScope.launch {
             slider.emit(repository.getSlider())
         }
     }
+
+    suspend fun getAmazingItems() {
+        viewModelScope.launch {
+            amazingItems.emit(repository.getAmazingItems())
+        }
+    }
+    */
 
 }

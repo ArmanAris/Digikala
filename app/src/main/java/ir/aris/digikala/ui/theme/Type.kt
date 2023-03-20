@@ -21,12 +21,20 @@ val font_standard = FontFamily(
 )
 
 
-val Typography.extraBoldNumber : TextStyle
+val Typography.extraBoldNumber: TextStyle
     @Composable
     get() = TextStyle(
         fontFamily = font_bold,
         fontWeight = FontWeight.Bold,
         fontSize = 26.sp,
+    )
+
+val Typography.extraSmall: TextStyle
+    @Composable
+    get() = TextStyle(
+        fontFamily = font_standard,
+        fontSize = 11.sp,
+        lineHeight = 25.sp
     )
 
 

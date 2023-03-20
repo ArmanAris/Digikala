@@ -25,6 +25,12 @@ fun BottomNavigationBar(
     onItemClick: (BottomNavItem) -> Unit,
 ) {
 
+    /*
+اگر در موقع بازگشت از صفحه وب ویو زیان تغییر کرد از کد زیر استفاده می کنیم.
+کد زیر دوباره زبان را ست می کند
+    */
+    // LocaleUtils.setLocale(LocalContext.current, Constants.USER_LANGUAGE)
+
     val items = listOf(
         BottomNavItem(
             name = stringResource(id = R.string.home),
