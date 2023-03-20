@@ -71,7 +71,7 @@ fun SwipeRefreshSection(
             item { TopSliderSection() }
             item { ShowcaseSection(navController) }
             item { AmazingOfferSection() }
-
+            item { ProposalCardSection() }
             item { SuperMarketOfferSection() }
 
         }
