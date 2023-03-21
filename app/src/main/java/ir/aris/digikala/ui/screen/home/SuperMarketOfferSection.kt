@@ -49,7 +49,7 @@ fun SuperMarketOfferSection(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colors.DigikalaLightRed)
+            .background(MaterialTheme.colors.DigikalaLightGreen)
     ) {
 
         LazyRow(modifier = Modifier.background(MaterialTheme.colors.DigikalaLightGreen)) {

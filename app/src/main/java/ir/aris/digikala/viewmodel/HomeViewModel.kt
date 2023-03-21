@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ir.aris.digikala.data.model.home.AmazingItem
+import ir.aris.digikala.data.model.home.MainCategory
 import ir.aris.digikala.data.model.home.Slider
 import ir.aris.digikala.data.network.NetworkResult
 import ir.aris.digikala.repository.HomeRepository
@@ -20,6 +21,7 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
     val superMarketItems =
         MutableStateFlow<NetworkResult<List<AmazingItem>>>(NetworkResult.Loading())
     val banners = MutableStateFlow<NetworkResult<List<Slider>>>(NetworkResult.Loading())
+    val categories = MutableStateFlow<NetworkResult<List<MainCategory>>>(NetworkResult.Loading())
 
     //type 1
     suspend fun getAllDataFromServer() {
@@ -37,6 +39,10 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
             launch {
                 banners.emit(repository.getProposalBanners())
             }
+            launch {
+                categories.emit(repository.getCategories())
+            }
+
 
         }
 

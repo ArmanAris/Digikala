@@ -16,6 +16,7 @@ import androidx.navigation.NavHostController
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import ir.aris.digikala.viewmodel.HomeViewModel
+import ir.truelearn.digikala.ui.screens.home.CategoryListSection
 import kotlinx.coroutines.launch
 
 @Composable
@@ -73,6 +74,7 @@ fun SwipeRefreshSection(
             item { AmazingOfferSection() }
             item { ProposalCardSection() }
             item { SuperMarketOfferSection() }
+            item { CategoryListSection() }
 
         }
     }

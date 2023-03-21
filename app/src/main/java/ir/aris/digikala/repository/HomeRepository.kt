@@ -1,6 +1,7 @@
 package ir.aris.digikala.repository
 
 import ir.aris.digikala.data.model.home.AmazingItem
+import ir.aris.digikala.data.model.home.MainCategory
 import ir.aris.digikala.data.model.home.Slider
 import ir.aris.digikala.data.network.BaseApiResponse
 import ir.aris.digikala.data.network.HomeApiInterface
@@ -28,6 +29,12 @@ class HomeRepository @Inject constructor(private val api: HomeApiInterface) : Ba
         safeApiCall {
             api.getProposalBanners()
         }
+
+    suspend fun getCategories(): NetworkResult<List<MainCategory>> =
+        safeApiCall {
+            api.getCategories()
+        }
+
 
 
 }
