@@ -2,11 +2,11 @@ package ir.aris.digikala.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ir.aris.digikala.data.model.home.AmazingItem
 import ir.aris.digikala.data.model.home.MainCategory
 import ir.aris.digikala.data.model.home.Slider
+import ir.aris.digikala.data.model.home.StoreProduct
 import ir.aris.digikala.data.network.NetworkResult
 import ir.aris.digikala.repository.HomeRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -23,6 +23,8 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
     val banners = MutableStateFlow<NetworkResult<List<Slider>>>(NetworkResult.Loading())
     val categories = MutableStateFlow<NetworkResult<List<MainCategory>>>(NetworkResult.Loading())
     val centerBannerItems = MutableStateFlow<NetworkResult<List<Slider>>>(NetworkResult.Loading())
+    val bestSellerItems = MutableStateFlow<NetworkResult<List<StoreProduct>>>(NetworkResult.Loading())
+
 
     //type 1
     suspend fun getAllDataFromServer() {
@@ -46,6 +48,10 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
             launch {
                 centerBannerItems.emit(repository.getCenterBanners())
             }
+            launch {
+                bestSellerItems.emit(repository.getBestSellerItems())
+            }
+
 
         }
 

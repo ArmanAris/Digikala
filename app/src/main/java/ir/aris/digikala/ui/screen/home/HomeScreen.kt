@@ -76,7 +76,7 @@ fun SwipeRefreshSection(
             item { SuperMarketOfferSection() }
             item { CategoryListSection() }
             item { CenterBannerSection(1) }
-
+            item { BestSellerOfferSection() }
             item { CenterBannerSection(2) }
 
             item { CenterBannerSection(3) }

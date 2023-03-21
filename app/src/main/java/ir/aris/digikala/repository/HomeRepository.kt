@@ -3,6 +3,7 @@ package ir.aris.digikala.repository
 import ir.aris.digikala.data.model.home.AmazingItem
 import ir.aris.digikala.data.model.home.MainCategory
 import ir.aris.digikala.data.model.home.Slider
+import ir.aris.digikala.data.model.home.StoreProduct
 import ir.aris.digikala.data.network.BaseApiResponse
 import ir.aris.digikala.data.network.HomeApiInterface
 import ir.aris.digikala.data.network.NetworkResult
@@ -38,6 +39,11 @@ class HomeRepository @Inject constructor(private val api: HomeApiInterface) : Ba
     suspend fun getCenterBanners(): NetworkResult<List<Slider>> =
         safeApiCall {
             api.getCenterBanners()
+        }
+
+    suspend fun getBestSellerItems(): NetworkResult<List<StoreProduct>> =
+        safeApiCall {
+            api.getBestSellerItems()
         }
 
 
