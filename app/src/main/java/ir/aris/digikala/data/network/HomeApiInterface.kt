@@ -16,7 +16,6 @@ interface HomeApiInterface {
     @GET("v1/getAmazingProducts")
     suspend fun getAmazingItems(): Response<ResponseResult<List<AmazingItem>>>
 
-
     @GET("v1/getSuperMarketAmazingProducts")
     suspend fun getAmazingSuperMarketItems(): Response<ResponseResult<List<AmazingItem>>>
 
@@ -32,5 +31,7 @@ interface HomeApiInterface {
     @GET("v1/getBestsellerProducts")
     suspend fun getBestSellerItems() : Response<ResponseResult<List<StoreProduct>>>
 
+    @GET("v1/getMostVisitedProducts")
+    suspend fun getMostVisitedItems() : Response<ResponseResult<List<StoreProduct>>>
 
 }
