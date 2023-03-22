@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import ir.aris.digikala.R
+import ir.aris.digikala.ui.theme.bottomBar
 import ir.aris.digikala.ui.theme.selectedBottomBar
 import ir.aris.digikala.ui.theme.unSelectedBottomBar
 
@@ -64,8 +65,8 @@ fun BottomNavigationBar(
 
     if (showBottomBar) {
         BottomNavigation(
-            modifier = Modifier,
-            backgroundColor = Color.White,
+            modifier = Modifier.height(60.dp),
+            backgroundColor = MaterialTheme.colors.bottomBar,
             elevation = 5.dp
         ) {
             items.forEachIndexed { index, item ->

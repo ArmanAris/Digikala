@@ -1,6 +1,7 @@
 package ir.aris.digikala.ui.screen.home
 
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -17,6 +18,7 @@ import ir.aris.digikala.R
 import ir.aris.digikala.data.model.home.StoreProduct
 import ir.aris.digikala.data.network.NetworkResult
 import ir.aris.digikala.ui.theme.DarkCyan
+import ir.aris.digikala.ui.theme.backgroundColor
 import ir.aris.digikala.ui.theme.darkText
 import ir.aris.digikala.ui.theme.spacing
 import ir.aris.digikala.viewmodel.HomeViewModel
@@ -24,7 +26,7 @@ import ir.aris.digikala.viewmodel.HomeViewModel
 
 @Composable
 fun MostFavoriteProductSection(
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel(),
 ) {
     var mostFavoriteList by remember {
         mutableStateOf<List<StoreProduct>>(emptyList())
@@ -52,6 +54,7 @@ fun MostFavoriteProductSection(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(MaterialTheme.colors.backgroundColor)
             .padding(MaterialTheme.spacing.small)
     ) {
 
@@ -86,7 +89,7 @@ fun MostFavoriteProductSection(
             items(mostFavoriteList) { item ->
                 MostFavoriteProductsOffer(item)
             }
-            item{
+            item {
                 MostFavoriteProductsShowMore()
             }
         }

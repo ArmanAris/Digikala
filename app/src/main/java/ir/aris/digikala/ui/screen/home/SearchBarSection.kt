@@ -18,12 +18,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import ir.aris.digikala.ui.theme.LocalShape
-import ir.aris.digikala.ui.theme.LocalSpacing
-import ir.aris.digikala.ui.theme.searchBarBg
 import ir.truelearn.digikala.ui.theme.*
 import ir.aris.digikala.R
-import ir.aris.digikala.ui.theme.unSelectedBottomBar
+import ir.aris.digikala.ui.theme.*
 import ir.aris.digikala.util.Constants.ENGLISH_LANG
 import ir.aris.digikala.util.Constants.USER_LANGUAGE
 
@@ -34,7 +31,7 @@ fun SearchBarSection() {
         modifier = Modifier
             .fillMaxWidth()
             .height(65.dp)
-            .background(Color.White),
+            .background(MaterialTheme.colors.backgroundColor),
         elevation = LocalElevation.current.extraSmall
     ) {
         Box(

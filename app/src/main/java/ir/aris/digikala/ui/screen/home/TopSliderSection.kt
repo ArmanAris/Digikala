@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,6 +28,7 @@ import ir.aris.digikala.data.network.NetworkResult
 import ir.aris.digikala.ui.components.OurLoading
 import ir.aris.digikala.ui.theme.LocalShape
 import ir.aris.digikala.ui.theme.LocalSpacing
+import ir.aris.digikala.ui.theme.backgroundColor
 import ir.aris.digikala.viewmodel.HomeViewModel
 import kotlinx.coroutines.delay
 
@@ -63,7 +65,7 @@ fun TopSliderSection(viewModel: HomeViewModel = hiltViewModel()) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(200.dp)
-                .background(Color.White)
+                .background(MaterialTheme.colors.backgroundColor)
         ) {
             Column(
                 modifier = Modifier

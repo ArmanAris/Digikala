@@ -1,6 +1,7 @@
 package ir.aris.digikala.ui.screen.home
 
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
@@ -17,6 +18,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import ir.aris.digikala.R
 import ir.aris.digikala.data.model.home.StoreProduct
 import ir.aris.digikala.data.network.NetworkResult
+import ir.aris.digikala.ui.theme.backgroundColor
 import ir.aris.digikala.ui.theme.darkText
 import ir.aris.digikala.ui.theme.spacing
 import ir.aris.digikala.util.DigitHelper.digitByLocate
@@ -25,7 +27,7 @@ import ir.aris.digikala.viewmodel.HomeViewModel
 
 @Composable
 fun BestSellerOfferSection(
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel(),
 ) {
     var bestSellerOfferList by remember {
         mutableStateOf<List<StoreProduct>>(emptyList())
@@ -53,8 +55,9 @@ fun BestSellerOfferSection(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(MaterialTheme.colors.backgroundColor)
             .padding(MaterialTheme.spacing.small)
-    ){
+    ) {
 
         Text(
             text = stringResource(id = R.string.best_selling_products),
@@ -73,12 +76,12 @@ fun BestSellerOfferSection(
                 .height(250.dp),
             horizontalArrangement = Arrangement.spacedBy(4.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp)
-        ){
+        ) {
 
-            itemsIndexed(bestSellerOfferList){index, item ->
+            itemsIndexed(bestSellerOfferList) { index, item ->
                 ProductHorizontalCard(
                     name = item.name,
-                    id = digitByLocate((index+1).toString()),
+                    id = digitByLocate((index + 1).toString()),
                     imageUrl = item.image
                 )
             }

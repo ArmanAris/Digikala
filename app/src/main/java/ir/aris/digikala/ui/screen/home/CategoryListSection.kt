@@ -2,6 +2,7 @@ package ir.truelearn.digikala.ui.screens.home
 
 import android.util.Log
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -18,6 +19,7 @@ import coil.compose.rememberAsyncImagePainter
 import ir.aris.digikala.R
 import ir.aris.digikala.data.model.home.MainCategory
 import ir.aris.digikala.data.network.NetworkResult
+import ir.aris.digikala.ui.theme.backgroundColor
 import ir.aris.digikala.ui.theme.darkText
 import ir.aris.digikala.ui.theme.spacing
 import ir.aris.digikala.viewmodel.HomeViewModel
@@ -26,7 +28,7 @@ import ir.aris.digikala.viewmodel.HomeViewModel
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun CategoryListSection(
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel(),
 ) {
     var categoryList by remember {
         mutableStateOf<List<MainCategory>>(emptyList())
@@ -49,10 +51,11 @@ fun CategoryListSection(
             loading = true
         }
     }
-    
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .background(MaterialTheme.colors.backgroundColor)
             .padding(MaterialTheme.spacing.small),
     ) {
         Text(
@@ -77,13 +80,13 @@ fun CategoryListSection(
             }
         }
     }
-    
+
 }
 
 @Composable
-fun CircularCategoryItem(item:MainCategory){
+fun CircularCategoryItem(item: MainCategory) {
     Column(
-        modifier = Modifier.size(100.dp , 160.dp),
+        modifier = Modifier.size(100.dp, 160.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {

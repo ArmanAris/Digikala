@@ -1,5 +1,6 @@
 package ir.aris.digikala.ui.screen.home
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -12,6 +13,7 @@ import ir.aris.digikala.ui.theme.LocalSpacing
 import ir.aris.digikala.R
 import ir.aris.digikala.navigation.Screen
 import ir.aris.digikala.ui.theme.amber
+import ir.aris.digikala.ui.theme.backgroundColor
 import ir.aris.digikala.ui.theme.grayCategory
 import ir.aris.digikala.util.Constants.AUCTION_URL
 import ir.aris.digikala.util.Constants.DIGIJET_URL
@@ -30,12 +32,13 @@ fun ShowcaseSection(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .background(MaterialTheme.colors.backgroundColor)
             .padding(
                 horizontal = LocalSpacing.current.semiMedium,
                 vertical = LocalSpacing.current.biggerSmall
             )
-    ) {
 
+    ) {
 
         Row(
             modifier = Modifier

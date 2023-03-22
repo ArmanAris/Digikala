@@ -1,6 +1,7 @@
 package ir.aris.digikala.ui.screen.home
 
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -13,6 +14,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import ir.aris.digikala.R
 import ir.aris.digikala.data.model.home.StoreProduct
 import ir.aris.digikala.data.network.NetworkResult
+import ir.aris.digikala.ui.theme.backgroundColor
 import ir.aris.digikala.ui.theme.darkText
 import ir.aris.digikala.ui.theme.spacing
 import ir.aris.digikala.viewmodel.HomeViewModel
@@ -49,8 +51,8 @@ fun MostDiscountedSection(
     Column(
         modifier = Modifier
             .fillMaxWidth()
+            .background(MaterialTheme.colors.backgroundColor)
     ) {
-
 
         Text(
             modifier = Modifier

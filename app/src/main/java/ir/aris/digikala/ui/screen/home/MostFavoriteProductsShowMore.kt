@@ -15,6 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import ir.aris.digikala.R
 import ir.aris.digikala.ui.theme.DarkCyan
+import ir.aris.digikala.ui.theme.backgroundColor
 import ir.aris.digikala.ui.theme.darkText
 import ir.aris.digikala.ui.theme.spacing
 
@@ -23,8 +24,8 @@ import ir.aris.digikala.ui.theme.spacing
 fun MostFavoriteProductsShowMore() {
     Column(
         modifier = Modifier
-            .size(180.dp, 375.dp)
-            .background(Color.White)
+            .size(180.dp, 320.dp)
+            .background(MaterialTheme.colors.backgroundColor)
             .padding(
                 end = MaterialTheme.spacing.medium,
                 start = MaterialTheme.spacing.semiSmall,

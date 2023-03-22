@@ -2,6 +2,7 @@ package ir.aris.digikala.ui.screen.home
 
 import android.util.Log
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -13,6 +14,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import ir.aris.digikala.data.model.home.Slider
 import ir.aris.digikala.data.network.NetworkResult
+import ir.aris.digikala.ui.theme.backgroundColor
 import ir.aris.digikala.ui.theme.roundedShape
 import ir.aris.digikala.ui.theme.spacing
 import ir.aris.digikala.viewmodel.HomeViewModel
@@ -50,6 +52,7 @@ fun ProposalCardSection(
     FlowRow(
         maxItemsInEachRow = 2,
         modifier = Modifier
+            .background(MaterialTheme.colors.backgroundColor)
             .fillMaxWidth()
             .height(290.dp)
             .padding(MaterialTheme.spacing.small)
