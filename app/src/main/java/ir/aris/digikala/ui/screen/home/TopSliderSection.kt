@@ -58,7 +58,6 @@ fun TopSliderSection(viewModel: HomeViewModel = hiltViewModel()) {
             .height(200.dp)
             .background(Color.White)
     ) {
-        // todo view pager
         Column(
             modifier = Modifier
                 .fillMaxSize()
