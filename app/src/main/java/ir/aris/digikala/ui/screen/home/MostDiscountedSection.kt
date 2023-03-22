@@ -21,7 +21,7 @@ import ir.aris.digikala.viewmodel.HomeViewModel
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun MostDiscountedSection(
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel(),
 ) {
     var mostDiscountedList by remember {
         mutableStateOf<List<StoreProduct>>(emptyList())
