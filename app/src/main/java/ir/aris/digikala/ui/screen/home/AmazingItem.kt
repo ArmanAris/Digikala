@@ -26,9 +26,7 @@ import ir.aris.digikala.data.model.home.AmazingItem
 import ir.aris.digikala.ui.theme.*
 import ir.aris.digikala.util.Constants
 import ir.aris.digikala.util.DigitHelper.applyDiscount
-import ir.aris.digikala.util.DigitHelper.digitByLocate
 import ir.aris.digikala.util.DigitHelper.digitByLocateAndSeparator
-import ir.truelearn.digikala.ui.theme.*
 
 
 @Composable
