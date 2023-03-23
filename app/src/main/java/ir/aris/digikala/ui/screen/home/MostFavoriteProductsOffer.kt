@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -20,6 +21,7 @@ import coil.compose.rememberAsyncImagePainter
 import ir.aris.digikala.R
 import ir.aris.digikala.data.model.home.StoreProduct
 import ir.aris.digikala.ui.theme.*
+import ir.aris.digikala.util.Constants
 import ir.aris.digikala.util.DigitHelper
 
 
@@ -131,7 +133,7 @@ fun MostFavoriteProductsOffer(item: StoreProduct) {
                                 .wrapContentHeight(Alignment.CenterVertically)
                         ) {
                             Text(
-                                text = "${DigitHelper.digitByLocate(item.discountPercent.toString())}%",
+                                text = "${DigitHelper.digitByLocateAndSeparator(item.discountPercent.toString())}%",
                                 color = Color.White,
                                 style = MaterialTheme.typography.h6,
                                 fontWeight = FontWeight.Bold,
@@ -151,7 +153,7 @@ fun MostFavoriteProductsOffer(item: StoreProduct) {
                                 )
 
                                 Icon(
-                                    painter = painterResource(id = R.drawable.toman),
+                                    painter = currencyLogoChangeByLanguage(),
                                     contentDescription = "",
                                     modifier = Modifier
                                         .size(MaterialTheme.spacing.semiLarge)
@@ -191,4 +193,13 @@ fun MostFavoriteProductsOffer(item: StoreProduct) {
     }
 
 
+}
+
+@Composable
+private fun currencyLogoChangeByLanguage(): Painter {
+    return if (Constants.USER_LANGUAGE == Constants.ENGLISH_LANG) {
+        painterResource(id = R.drawable.dollar)
+    } else {
+        painterResource(id = R.drawable.toman)
+    }
 }

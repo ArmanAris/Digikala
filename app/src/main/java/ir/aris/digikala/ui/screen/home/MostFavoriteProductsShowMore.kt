@@ -14,6 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import ir.aris.digikala.R
+import ir.aris.digikala.ui.components.IconWithRotate
 import ir.aris.digikala.ui.theme.DarkCyan
 import ir.aris.digikala.ui.theme.backgroundColor
 import ir.aris.digikala.ui.theme.darkText
@@ -35,12 +36,7 @@ fun MostFavoriteProductsShowMore() {
         verticalArrangement = Arrangement.Center,
     ) {
 
-        Icon(
-            painter = painterResource(id = R.drawable.show_more),
-            contentDescription = "",
-            tint = MaterialTheme.colors.DarkCyan,
-            modifier = Modifier.size(40.dp, 40.dp)
-        )
+        IconWithRotate(painterResource(id = R.drawable.show_more), MaterialTheme.colors.DarkCyan)
 
         Spacer(modifier = Modifier.height(20.dp))
 

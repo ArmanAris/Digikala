@@ -1,4 +1,4 @@
-package ir.truelearn.digikala.ui.screens.home
+package ir.aris.digikala.ui.screen.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -17,6 +17,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import ir.aris.digikala.ui.theme.spacing
 import ir.aris.digikala.R
+import ir.aris.digikala.ui.components.IconWithRotate
+import ir.aris.digikala.util.Constants
 
 @Composable
 fun AmazingOfferCard(topImageResId: Int, bottomImageResId: Int) {
@@ -34,8 +36,11 @@ fun AmazingOfferCard(topImageResId: Int, bottomImageResId: Int) {
     ) {
         Spacer(modifier = Modifier.height(60.dp))
 
-        Image(
-            painter = painterResource(id = topImageResId),
+        Image(painter = if (Constants.USER_LANGUAGE == Constants.ENGLISH_LANG) {
+            painterResource(id = R.drawable.amazing_en)
+        } else {
+            painterResource(id = topImageResId)
+        },
             contentDescription = "",
             modifier = Modifier
                 .fillMaxWidth()
@@ -66,12 +71,10 @@ fun AmazingOfferCard(topImageResId: Int, bottomImageResId: Int) {
                 fontWeight = FontWeight.SemiBold
             )
 
-            Icon(
-                imageVector = Icons.Filled.KeyboardArrowLeft,
-                contentDescription = "",
-                tint = Color.White
-            )
+            IconWithRotate(Icons.Filled.KeyboardArrowLeft)
+
         }
     }
 
 }
+

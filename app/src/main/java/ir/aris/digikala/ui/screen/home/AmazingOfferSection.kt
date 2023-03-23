@@ -13,7 +13,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import ir.aris.digikala.data.model.home.AmazingItem
 import ir.aris.digikala.data.network.NetworkResult
 import ir.aris.digikala.viewmodel.HomeViewModel
-import ir.truelearn.digikala.ui.screens.home.AmazingOfferCard
 import ir.aris.digikala.R
 import ir.aris.digikala.ui.theme.DigikalaLightRed
 

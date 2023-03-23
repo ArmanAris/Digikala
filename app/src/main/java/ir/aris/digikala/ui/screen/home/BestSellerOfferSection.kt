@@ -22,6 +22,7 @@ import ir.aris.digikala.ui.theme.backgroundColor
 import ir.aris.digikala.ui.theme.darkText
 import ir.aris.digikala.ui.theme.spacing
 import ir.aris.digikala.util.DigitHelper.digitByLocate
+import ir.aris.digikala.util.DigitHelper.digitByLocateAndSeparator
 import ir.aris.digikala.viewmodel.HomeViewModel
 
 
@@ -81,7 +82,7 @@ fun BestSellerOfferSection(
             itemsIndexed(bestSellerOfferList) { index, item ->
                 ProductHorizontalCard(
                     name = item.name,
-                    id = digitByLocate((index + 1).toString()),
+                    id = digitByLocateAndSeparator((index + 1).toString()),
                     imageUrl = item.image
                 )
             }

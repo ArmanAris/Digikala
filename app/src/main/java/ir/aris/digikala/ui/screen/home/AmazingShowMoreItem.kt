@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import ir.aris.digikala.ui.theme.roundedShape
 import ir.aris.digikala.ui.theme.spacing
 import ir.aris.digikala.R
+import ir.aris.digikala.ui.components.IconWithRotate
 import ir.aris.digikala.ui.theme.DigikalaLightRed
 import ir.aris.digikala.ui.theme.darkText
 
@@ -40,12 +41,8 @@ fun AmazingShowMoreItem() {
             modifier = Modifier.fillMaxWidth()
         ) {
 
-            Icon(
-                painter = painterResource(id = R.drawable.show_more),
-                contentDescription = "",
-                tint = MaterialTheme.colors.DigikalaLightRed,
-                modifier = Modifier.size(40.dp, 40.dp)
-            )
+            IconWithRotate(painterResource(id = R.drawable.show_more),
+                MaterialTheme.colors.DigikalaLightRed)
 
             Spacer(modifier = Modifier.height(20.dp))
 
