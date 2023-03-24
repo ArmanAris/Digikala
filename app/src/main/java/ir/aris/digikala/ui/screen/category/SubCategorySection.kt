@@ -65,6 +65,7 @@ fun SubCategorySection(
         is NetworkResult.Success -> {
 
             subCategoryResult.data?.let {
+
                 toolList = it.tool
                 digitalList = it.digital
                 mobileList = it.mobile
@@ -76,6 +77,7 @@ fun SubCategorySection(
                 homeList = it.home
                 bookList = it.book
                 sportList = it.sport
+
             }
 
             loading = false
