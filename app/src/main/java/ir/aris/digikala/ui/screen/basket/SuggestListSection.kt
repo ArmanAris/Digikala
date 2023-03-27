@@ -12,6 +12,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import ir.aris.digikala.R
+import ir.aris.digikala.data.model.basket.CartItem
+import ir.aris.digikala.data.model.basket.CartStatus
 import ir.aris.digikala.data.model.home.StoreProduct
 import ir.aris.digikala.data.network.NetworkResult
 import ir.aris.digikala.ui.screen.home.MostDiscountedCard
@@ -44,7 +46,7 @@ fun SuggestListSection(
         }
         is NetworkResult.Error -> {
             loading = false
-            Log.e("3636", "SuggestListSection error : ${suggestedItemResult.message}")
+            Log.e("7171", "SuggestListSection error : ${suggestedItemResult.message}")
         }
         is NetworkResult.Loading -> {
             loading = true
@@ -79,7 +81,23 @@ fun SuggestListSection(
     ) {
 
         for (item in suggestedList) {
-            MostDiscountedCard(item)
+
+            SuggestionItemCard(item){
+                viewModel.insertCartItem(
+                    CartItem(
+                        it._id,
+                        it.name,
+                        it.seller,
+                        it.price,
+                        it.discountPercent,
+                        it.image,
+                        1,
+                        CartStatus.CURRENT_CART
+                    )
+                )
+            }
+
+
         }
 
     }
