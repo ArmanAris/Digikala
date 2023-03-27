@@ -10,7 +10,6 @@ import ir.aris.digikala.data.network.NetworkResult
 import ir.aris.digikala.repository.BasketRepository
 import ir.aris.digikala.ui.screen.basket.BasketScreenState
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -23,11 +22,14 @@ class BasketViewModel @Inject constructor(private val repository: BasketReposito
     val suggestedList = MutableStateFlow<NetworkResult<List<StoreProduct>>>(NetworkResult.Loading())
 
 
-    val nextCartItems: Flow<List<CartItem>> = repository.nextCartItems
-
     private val _currentCartItems: MutableStateFlow<BasketScreenState<List<CartItem>>> =
         MutableStateFlow(BasketScreenState.Loading)
     val currentCartItems: StateFlow<BasketScreenState<List<CartItem>>> = _currentCartItems
+
+    private val _nextCartItems: MutableStateFlow<BasketScreenState<List<CartItem>>> =
+        MutableStateFlow(BasketScreenState.Loading)
+    val nextCartItems: StateFlow<BasketScreenState<List<CartItem>>> = _nextCartItems
+
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
@@ -36,8 +38,16 @@ class BasketViewModel @Inject constructor(private val repository: BasketReposito
                     _currentCartItems.emit(BasketScreenState.Success(cartItems))
                 }
             }
+
+            launch {
+                repository.nextCartItems.collectLatest { nextCartItems ->
+                    _nextCartItems.emit(BasketScreenState.Success(nextCartItems))
+                }
+            }
         }
     }
+
+
 
 
     fun getSuggestedItems() {
