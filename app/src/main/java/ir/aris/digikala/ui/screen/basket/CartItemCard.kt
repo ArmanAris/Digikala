@@ -31,7 +31,6 @@ import ir.aris.digikala.ui.theme.*
 import ir.aris.digikala.util.DigitHelper.digitByLocateAndSeparator
 import ir.aris.digikala.viewmodel.BasketViewModel
 
-
 @Composable
 fun CartItemCard(
     item: CartItem,
@@ -71,7 +70,11 @@ fun CartItemCard(
                         color = MaterialTheme.colors.darkText
                     )
                     Text(
-                        text = "${digitByLocateAndSeparator(count.value.toString())}  کالا",
+                        text = "${digitByLocateAndSeparator(count.value.toString())} ${
+                            stringResource(
+                                R.string.goods
+                            )
+                        }",
                         style = MaterialTheme.typography.h6,
                         color = Color.Gray
                     )
@@ -306,7 +309,8 @@ fun CartItemCard(
                                 modifier = Modifier
                                     .size(28.dp)
                                     .clickable {
-                                        viewModel.changeCartItemStatus(item.itemId, CartStatus.CURRENT_CART
+                                        viewModel.changeCartItemStatus(
+                                            item.itemId, CartStatus.CURRENT_CART
 
                                         )
 
@@ -325,22 +329,33 @@ fun CartItemCard(
                         .padding(MaterialTheme.spacing.semiMedium)
                 )
 
-                Row {
-                    Text(
-                        text = digitByLocateAndSeparator(item.price.toString()),
-                        style = MaterialTheme.typography.h3,
-                        fontWeight = FontWeight.SemiBold,
-                        color = MaterialTheme.colors.darkText,
-                    )
+                val discountAmount = (item.price * item.discountPercent) / 100
 
-                    Icon(
-                        painter = painterResource(id = R.drawable.toman),
-                        contentDescription = "",
-                        modifier = Modifier
-                            .size(24.dp)
-                            .padding(MaterialTheme.spacing.extraSmall)
+                Column {
+                    Text(
+                        text = "${digitByLocateAndSeparator(discountAmount.toString())} ${stringResource(id = R.string.discount)}",
+                        style = MaterialTheme.typography.extraSmall,
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colors.DigikalaLightRed,
                     )
+                    Row {
+                        Text(
+                            text = digitByLocateAndSeparator(item.price.toString()),
+                            style = MaterialTheme.typography.h3,
+                            fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colors.darkText,
+                        )
+
+                        Icon(
+                            painter = painterResource(id = R.drawable.toman),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .size(24.dp)
+                                .padding(MaterialTheme.spacing.extraSmall)
+                        )
+                    }
                 }
+
             }
 
             Spacer(modifier = Modifier.height(MaterialTheme.spacing.semiLarge))
@@ -433,5 +448,7 @@ private fun DetailRow(
 
     }
 }
+
+
 
 

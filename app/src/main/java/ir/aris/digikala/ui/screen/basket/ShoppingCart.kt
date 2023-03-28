@@ -19,62 +19,88 @@ import ir.aris.digikala.data.model.basket.CartStatus
 import ir.aris.digikala.ui.theme.darkText
 import ir.aris.digikala.ui.theme.spacing
 import ir.aris.digikala.viewmodel.BasketViewModel
+import ir.aris.digikala.R
 
 
 @Composable
 fun ShoppingCart(
-    viewModel: BasketViewModel = hiltViewModel(),
+    viewModel: BasketViewModel = hiltViewModel()
 ) {
+
+    val cartDetail = viewModel.cartDetail.collectAsState()
 
     val currentCartItemsState: BasketScreenState<List<CartItem>> by viewModel.currentCartItems
         .collectAsState(BasketScreenState.Loading)
 
-    LazyColumn(
+    Box(
         modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-            .padding(bottom = 60.dp),
+            .fillMaxSize(),
+        contentAlignment = Alignment.TopCenter
     ) {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+                .padding(bottom = 60.dp),
+        ) {
 
-        when (currentCartItemsState) {
-            is BasketScreenState.Success -> {
-                if ((currentCartItemsState as BasketScreenState.Success<List<CartItem>>).data.isEmpty()) {
-                    item { EmptyBasketShopping() }
-                    item { SuggestListSection() }
-                } else {
 
-                    items((currentCartItemsState as BasketScreenState.Success<List<CartItem>>).data) { item ->
-                        CartItemCard(item, CartStatus.CURRENT_CART)
-                    }
+            when (currentCartItemsState) {
+                is BasketScreenState.Success -> {
+                    if ((currentCartItemsState as BasketScreenState.Success<List<CartItem>>).data.isEmpty()) {
+                        item { EmptyBasketShopping() }
+                        item { SuggestListSection() }
+                    } else {
 
-                }
-            }
-            is BasketScreenState.Loading -> {
-                item {
-                    Column(
-                        modifier = Modifier
-                            .height(LocalConfiguration.current.screenHeightDp.dp - 60.dp)
-                            .fillMaxWidth()
-                            .padding(vertical = MaterialTheme.spacing.small),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
-                    ) {
-                        Text(
-                            text = stringResource(ir.aris.digikala.R.string.please_wait),
-                            fontWeight = FontWeight.Bold,
-                            style = MaterialTheme.typography.h5,
-                            color = MaterialTheme.colors.darkText,
-                        )
+                        items((currentCartItemsState as BasketScreenState.Success<List<CartItem>>).data) { item ->
+                            CartItemCard(item, CartStatus.CURRENT_CART)
+                        }
+
+                        item {
+                            CartPriceDetailSection(cartDetail.value)
+                        }
                     }
                 }
+                is BasketScreenState.Loading -> {
+                    item {
+                        Column(
+                            modifier = Modifier
+                                .height(LocalConfiguration.current.screenHeightDp.dp - 60.dp)
+                                .fillMaxWidth()
+                                .padding(vertical = MaterialTheme.spacing.small),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Text(
+                                text = stringResource(R.string.please_wait),
+                                fontWeight = FontWeight.Bold,
+                                style = MaterialTheme.typography.h5,
+                                color = MaterialTheme.colors.darkText,
+                            )
+                        }
+                    }
+                }
+                is BasketScreenState.Error -> {
+                    Log.e("7171", "err")
+                }
             }
-            is BasketScreenState.Error -> {
-                Log.e("3636", "err")
-            }
+
+
         }
 
-
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter)
+                .padding(bottom = 60.dp)
+        ) {
+            BuyProcessContinue(cartDetail.value.payablePrice)
+        }
     }
 
+
 }
+
+
+
 
