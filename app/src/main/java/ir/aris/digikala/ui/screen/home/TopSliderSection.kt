@@ -3,6 +3,7 @@ package ir.aris.digikala.ui.screen.home
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.interaction.collectIsDraggedAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
@@ -31,6 +32,7 @@ import ir.aris.digikala.ui.theme.LocalSpacing
 import ir.aris.digikala.ui.theme.backgroundColor
 import ir.aris.digikala.viewmodel.HomeViewModel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collectLatest
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
@@ -126,13 +128,30 @@ fun TopSliderSection(viewModel: HomeViewModel = hiltViewModel()) {
 
                     }
                 }
+                ///////////////////////////////// with animation ///////////////////////////////////
 
-                LaunchedEffect(key1 = pagerState.currentPage) {
+                val isDraggedState = pagerState.interactionSource.collectIsDraggedAsState()
+                LaunchedEffect(isDraggedState) {
+                    snapshotFlow { isDraggedState.value }
+                        .collectLatest { isDraggedState ->
+                            if (!isDraggedState) {
+                                while (true) {
+                                    delay(6000)
+                                    var newPosition = pagerState.currentPage + 1
+                                    if (newPosition > sliderList.size - 1) newPosition = 0
+                                    pagerState.animateScrollToPage(newPosition)
+                                }
+                            }
+                        }
+                }
+                ///////////////////////////////// no animation /////////////////////////////////////
+
+/*                LaunchedEffect(key1 = pagerState.currentPage) {
                     delay(6000)
                     var newPosition = pagerState.currentPage + 1
                     if (newPosition > sliderList.size - 1) newPosition = 0
                     pagerState.scrollToPage(newPosition)
-                }
+                }*/
 
             }
 

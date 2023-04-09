@@ -24,6 +24,7 @@ import ir.aris.digikala.ui.theme.spacing
 import ir.aris.digikala.viewmodel.BasketViewModel
 
 
+
 @Composable
 fun BasketScreen(navController: NavHostController) {
     Basket(navController)
@@ -35,6 +36,8 @@ fun Basket(
     navController: NavController,
     viewModel: BasketViewModel = hiltViewModel(),
 ) {
+    val currentCartItemsCount by viewModel.currentCartItemsCount.collectAsState(0)
+    val nextCartItemsCount by viewModel.nextCartItemsCount.collectAsState(0)
 
 
     var selectedTabIndex by remember {
@@ -78,6 +81,21 @@ fun Basket(
                                 style = MaterialTheme.typography.h6,
                                 fontWeight = FontWeight.SemiBold,
                             )
+
+                            val cartCounter = if (index == 0) {
+                                currentCartItemsCount
+                            } else {
+                                nextCartItemsCount
+                            }
+                            if (cartCounter > 0) {
+                                Spacer(modifier = Modifier.width(10.dp))
+                                SetBadgeToTab(
+                                    selectedTabIndex = selectedTabIndex,
+                                    index = index,
+                                    cartCounter = cartCounter
+                                )
+                            }
+
                         }
                     }
                 )
