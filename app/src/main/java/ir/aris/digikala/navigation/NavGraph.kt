@@ -11,6 +11,7 @@ import ir.aris.digikala.ui.screen.basket.BasketScreen
 import ir.aris.digikala.ui.screen.category.CategoryScreen
 import ir.aris.digikala.ui.screen.home.HomeScreen
 import ir.aris.digikala.ui.screen.home.WebPageScreen
+import ir.aris.digikala.ui.screen.profile.ProfileScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
