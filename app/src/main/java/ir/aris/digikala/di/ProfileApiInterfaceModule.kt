@@ -4,18 +4,18 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import ir.aris.digikala.data.network.CategoryApiInterface
+import ir.aris.digikala.data.network.ProfileApiInterface
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
 
 @Module
 @InstallIn(SingletonComponent::class)
-object CategoryApiInterfaceModule {
+object ProfileApiInterfaceModule {
 
     @Singleton
     @Provides
-    fun provideCategoryApiService(retrofit: Retrofit) : CategoryApiInterface =
-        retrofit.create(CategoryApiInterface::class.java)
+    fun provideProfileApiService(retrofit: Retrofit) : ProfileApiInterface =
+        retrofit.create(ProfileApiInterface::class.java)
 
 }
