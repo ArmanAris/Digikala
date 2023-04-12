@@ -27,7 +27,7 @@ fun MyEditText(
         onValueChange = {onValueChange(it)},
         modifier = Modifier
             .fillMaxWidth()
-            .height(92.dp)
+            .height(100.dp)
             .padding(
                 start = MaterialTheme.spacing.semiLarge,
                 end = MaterialTheme.spacing.semiLarge,

@@ -1,4 +1,4 @@
-package ir.aris.digikala.ui.screen
+package ir.aris.digikala.ui.screen.splash
 
 
 import androidx.compose.foundation.Image

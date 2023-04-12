@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import ir.aris.digikala.ui.theme.digikalaRed
 import ir.aris.digikala.ui.theme.extraSmall
 import ir.aris.digikala.ui.theme.roundedShape
@@ -63,11 +64,12 @@ fun IconWithBadge(
                     modifier = Modifier
                         .background(color = MaterialTheme.colors.digikalaRed)
                         .height(16.dp)
-                        .padding(horizontal = MaterialTheme.spacing.semiSmall),
+                        .padding(horizontal = MaterialTheme.spacing.extraSmall),
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.extraSmall,
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
+                    fontSize = 10.sp
                 )
             }
         }

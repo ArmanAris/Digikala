@@ -6,12 +6,12 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import ir.aris.digikala.ui.screen.*
 import ir.aris.digikala.ui.screen.basket.BasketScreen
 import ir.aris.digikala.ui.screen.category.CategoryScreen
 import ir.aris.digikala.ui.screen.home.HomeScreen
 import ir.aris.digikala.ui.screen.home.WebPageScreen
 import ir.aris.digikala.ui.screen.profile.ProfileScreen
+import ir.aris.digikala.ui.screen.splash.SplashScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {

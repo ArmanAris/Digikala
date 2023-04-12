@@ -23,7 +23,6 @@ import ir.aris.digikala.R
 import ir.aris.digikala.ui.theme.*
 import ir.aris.digikala.util.InputValidation.isValidEmail
 import ir.aris.digikala.util.InputValidation.isValidPhoneNumber
-import ir.truelearn.digikala.ui.theme.*
 
 
 @Composable
@@ -103,7 +102,7 @@ fun LoginScreen(
                 if (isValidEmail(profileViewModel.inputPhoneState)
                     || isValidPhoneNumber(profileViewModel.inputPhoneState)
                 ) {
-                    profileViewModel.screenState = ProfileScreenState.PROFILE_STATE
+                    profileViewModel.screenState = ProfileScreenState.REGISTER_STATE
                 } else {
                     Toast.makeText(
                         context,
@@ -111,6 +110,7 @@ fun LoginScreen(
                         Toast.LENGTH_LONG
                     ).show()
                 }
+
 
             }
         }
