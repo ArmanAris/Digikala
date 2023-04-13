@@ -9,6 +9,9 @@ object Constants {
     const val DATASTORE_NAME = "DIGIKALA_DATA_STORE"
 
     const val API_KEY = BuildConfig.X_API_KEY
+    const val KEY = BuildConfig.KEY
+    const val IV = BuildConfig.IV
+
     var USER_LANGUAGE = "USER_LANGUAGE"
     var USER_TOKEN = "USER_TOKEN"
     var USER_ID = "USER_ID"
