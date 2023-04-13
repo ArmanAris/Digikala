@@ -10,6 +10,11 @@ object Constants {
 
     const val API_KEY = BuildConfig.X_API_KEY
     var USER_LANGUAGE = "USER_LANGUAGE"
+    var USER_TOKEN = "USER_TOKEN"
+    var USER_ID = "USER_ID"
+    var USER_PHONE = "USER_PHONE"
+    var USER_PASSWORD = "USER_PASSWORD"
+
 
     const val TIMEOUT_IN_SECOND: Long = 60
     const val BASE_URL = "https://dig-za0p.onrender.com/api/"
